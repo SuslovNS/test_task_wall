@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Регистрация через web
+Route::get('/home', [App\Http\Controllers\Api\DeskController::class, 'index']);
+
+Route::post('/login', [\App\Http\Controllers\Api\Auth\LoginController::class, 'login']);
+
+Route::group(['middleware'=>['jwt.verify']], function (){
+    Route::post('/store', [App\Http\Controllers\Api\DeskController::class, 'store']);
+    Route::delete('/delete/{desk}', [App\Http\Controllers\Api\DeskController::class, 'destroy']);
+    Route::get('/refresh', [\App\Http\Controllers\Api\Auth\LoginController::class, 'refresh']);
+});

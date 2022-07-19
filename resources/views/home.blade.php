@@ -5,8 +5,12 @@
         @if (Route::has('login'))
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                 @auth
-                    <a href="{{ url('/') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Главная</a>
-                    <a href="{{ url('/create') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Написать пост </a>
+                    <a href="{{ url('/api/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Главная</a>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <input type="submit" class="btn-outline-primary" value="Выйти">
+                    </form>
+
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 

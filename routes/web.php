@@ -14,18 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\DeskController::class, 'index'])->name('main');
-
-
 Auth::routes();
+
+Route::get('/', function (){
+    return view('auth.register');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'auth'], function (){
-    Route::get('/create', [\App\Http\Controllers\DeskController::class, 'create'])->name('create');
-    Route::post('/store', [\App\Http\Controllers\DeskController::class, 'store'])->name('store');
-    Route::delete('/delete/{desk}', [\App\Http\Controllers\DeskController::class, 'destroy'])->name('delete');
-});
+
+//Route::get('/', [\App\Http\Controllers\DeskController::class, 'index'])->name('main');
+//
+//
+//Route::group(['middleware' => 'auth'], function (){
+//    Route::get('/create', [\App\Http\Controllers\DeskController::class, 'create'])->name('create');
+//    Route::post('/store', [\App\Http\Controllers\DeskController::class, 'store'])->name('store');
+//    Route::delete('/delete/{desk}', [\App\Http\Controllers\DeskController::class, 'destroy'])->name('delete');
+//});
 
 
 

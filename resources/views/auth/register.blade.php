@@ -6,6 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">
+                    <a href="{{ url('/login') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Login</a>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

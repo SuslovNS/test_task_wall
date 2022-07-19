@@ -11,6 +11,8 @@ class Desk extends Model
     use HasFactory;
     protected $table = 'desks';
     protected $guarded = false;
+    public $timestamps = ['created_at'];
+    const UPDATED_AT = null;
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
